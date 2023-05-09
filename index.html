@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head><link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Tienes un nuevo mensaje de Heinsenberg</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+        }
+        h1 {
+            color: #333333;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        #sound-btn {
+            padding: 10px 20px;
+            background-color: #333333;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Yesi tenemos que cocinar qué haces con los vagos del geteasanandreas</h1>
+    <img src="yesi.jpg" alt="Imagen de broma">
+    <button id="sound-btn">¡Ya voy Mr. blanco!</button>
+
+    <script>
+        var audio = new Audio("rompiendomalo.mp3");
+        var soundButton = document.getElementById("sound-btn");
+        soundButton.addEventListener("click", function() {
+            audio.play();
+        });
+    </script>
+</body>
+</html>
