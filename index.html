@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <title>Tienes un nuevo mensaje de Heinsenberg</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <title>Tienes un nuevo mensaje de Heisenberg</title>
     <style>
         body {
             text-align: center;
             font-family: Arial, sans-serif;
             background-color: #f1f1f1;
+            padding: 20px;
         }
+
         h1 {
             color: #333333;
+            margin-top: 30px;
         }
+
         img {
             width: 300px;
             height: auto;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
+
         #sound-btn {
             padding: 10px 20px;
             background-color: #333333;
@@ -24,46 +31,115 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
-        #password-container {
+
+        #password-form {
             display: none;
             margin-top: 20px;
         }
+
+        #password-form label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333333;
+            font-weight: bold;
+        }
+
         #password-input {
             padding: 10px;
-            border: 1px solid #333333;
+            width: 250px;
+            border: none;
+            border-bottom: 2px solid #333333;
+            border-radius: 0;
+            font-size: 16px;
+            outline: none;
+        }
+
+        #password-submit-btn {
+            padding: 10px 20px;
+            background-color: #333333;
+            color: #ffffff;
+            border: none;
             border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        #secret-section {
+            display: none;
+            margin-top: 30px;
+        }
+
+        #secret-section h2 {
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        #elpepe-btn {
+            padding: 10px 20px;
+            background-color: #333333;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 <body>
-    <h1>Yesi, tenemos que cocinar. ¿Qué haces con los vagos del geteasanandreas?</h1>
+    <h1>Yesi, tenemos que cocinar, ¿qué haces con los vagos del "GetaeSanAndreas"?</h1>
     <img src="yesi.jpg" alt="Imagen de broma">
-    <button id="sound-btn">¡Ya voy Mr. blanco!</button>
+    <button id="sound-btn">¡Ya voy, Mr. Blanco!</button>
 
-    <div id="password-container">
-        <label for="password-input">Ingresa la contraseña:</label>
-        <input type="password" id="password-input">
-        <button onclick="verificarContraseña()">Aceptar</button>
+    <form id="password-form" style="display: none;">
+        <label for="password-input">Introduce la contraseña:</label>
+        <input type="password" id="password-input" placeholder="Contraseña" />
+        <button type="submit" id="password-submit-btn">Enviar</button>
+    </form>
+
+    <div id="secret-section" style="display: none;">
+        <h2>El Pepe</h2>
+        <button id="elpepe-btn">¡El Pepe!</button>
     </div>
 
     <script>
         var audio = new Audio("rompiendomalo.mp3");
         var soundButton = document.getElementById("sound-btn");
-
         soundButton.addEventListener("click", function() {
-            document.getElementById("password-container").style.display = "block";
+            audio.play();
+            showPasswordForm();
         });
 
-        function verificarContraseña() {
-            var password = document.getElementById("password-input").value;
-            if (password === "tu_contraseña_aqui") {
-                audio.play();
+        var passwordForm = document.getElementById("password-form");
+        var passwordInput = document.getElementById("password-input");
+        passwordForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            var password = passwordInput.value;
+            if (password === "elpepe123") {
+                showSecretSection();
             } else {
-                alert("Contraseña incorrecta. No puedes pasar.");
+                alert("Contraseña incorrecta. Intenta de nuevo.");
+                passwordInput.value = "";
             }
-            document.getElementById("password-container").style.display = "none";
+        });
+
+        var elpepeBtn = document.getElementById("elpepe-btn");
+        elpepeBtn.addEventListener("click", function() {
+            alert("¡El Pepe!");
+        });
+
+        function showPasswordForm() {
+            passwordForm.style.display = "block";
+        }
+
+        function showSecretSection() {
+            passwordForm.style.display = "none";
+            document.getElementById("secret-section").style.display = "block";
         }
     </script>
 </body>
 </html>
+
