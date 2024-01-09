@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <head><link rel="icon" type="image/x-icon" href="favicon.ico">
+<head>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <title>Tienes un nuevo mensaje de Heinsenberg</title>
     <style>
         body {
@@ -24,18 +25,36 @@
             border-radius: 4px;
             cursor: pointer;
         }
+        #password-container {
+            margin-top: 20px;
+        }
+        #password-input {
+            padding: 10px;
+            border: 1px solid #333333;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
-    <h1>Yesi tenemos que cocinar qué haces con los vagos del geteasanandreas</h1>
+    <h1>Yesi, tenemos que cocinar. ¿Qué haces con los vagos del geteasanandreas?</h1>
     <img src="yesi.jpg" alt="Imagen de broma">
     <button id="sound-btn">¡Ya voy Mr. blanco!</button>
+
+    <div id="password-container">
+        <label for="password-input">Ingresa la contraseña:</label>
+        <input type="password" id="password-input">
+    </div>
 
     <script>
         var audio = new Audio("rompiendomalo.mp3");
         var soundButton = document.getElementById("sound-btn");
         soundButton.addEventListener("click", function() {
-            audio.play();
+            var password = document.getElementById("password-input").value;
+            if (password === "vergara") {
+                audio.play();
+            } else {
+                alert("Contraseña incorrecta. No eres Skibidi.");
+            }
         });
     </script>
 </body>
