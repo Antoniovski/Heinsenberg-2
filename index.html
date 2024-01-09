@@ -87,6 +87,22 @@
             cursor: pointer;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
+
+        /* Nuevos estilos para la terminal Fallout */
+        #fallout-terminal {
+            display: none;
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            box-sizing: border-box;
+            white-space: pre-wrap;
+            overflow: auto;
+            height: 300px;
+            border-radius: 10px;
+            margin-top: 30px;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -103,6 +119,8 @@
     <div id="secret-section" style="display: none;">
         <h2>El Pepe</h2>
         <button id="elpepe-btn">¡El Pepe!</button>
+        <!-- Agregar la terminal Fallout aquí -->
+        <div id="fallout-terminal"></div>
     </div>
 
     <script>
@@ -138,8 +156,15 @@
         function showSecretSection() {
             passwordForm.style.display = "none";
             document.getElementById("secret-section").style.display = "block";
+            showFalloutTerminal();
+        }
+
+        // Nueva función para mostrar la terminal Fallout
+        function showFalloutTerminal() {
+            var falloutTerminal = document.getElementById("fallout-terminal");
+            falloutTerminal.style.display = "block";
+            falloutTerminal.innerHTML = "Bienvenido a la Terminal Fallout\n>";
         }
     </script>
 </body>
 </html>
-
