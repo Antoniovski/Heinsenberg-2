@@ -50,19 +50,18 @@
     <script>
         var audio = new Audio("rompiendomalo.mp3");
         var soundButton = document.getElementById("sound-btn");
-        soundButton.addEventListener("click", function(event) {
-            event.preventDefault(); // Evita la recarga de la página al hacer clic en el botón
+
+        soundButton.addEventListener("click", function() {
             document.getElementById("password-container").style.display = "block";
         });
 
         function verificarContraseña() {
             var password = document.getElementById("password-input").value;
-            if (password === "vergara") {
+            if (password === "tu_contraseña_aqui") {
                 audio.play();
             } else {
                 alert("Contraseña incorrecta. No puedes pasar.");
             }
-            // Puedes ocultar el contenedor de contraseña nuevamente si lo deseas.
             document.getElementById("password-container").style.display = "none";
         }
     </script>
