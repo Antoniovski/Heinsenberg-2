@@ -2,7 +2,7 @@
 <html>
 <head>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <title>Tienes un nuevo mensaje de Heisenberg</title>
+    <title>Tienes un nuevo mensaje de Heinsenberg</title>
     <style>
         body {
             text-align: center;
@@ -39,7 +39,7 @@
 <body>
     <h1>Yesi, tenemos que cocinar. ¿Qué haces con los vagos del geteasanandreas?</h1>
     <img src="yesi.jpg" alt="Imagen de broma">
-    <button id="sound-btn" onclick="mostrarContraseña()">¡Ya voy Mr. blanco!</button>
+    <button id="sound-btn">¡Ya voy Mr. blanco!</button>
 
     <div id="password-container">
         <label for="password-input">Ingresa la contraseña:</label>
@@ -49,14 +49,15 @@
 
     <script>
         var audio = new Audio("rompiendomalo.mp3");
-
-        function mostrarContraseña() {
+        var soundButton = document.getElementById("sound-btn");
+        soundButton.addEventListener("click", function(event) {
+            event.preventDefault(); // Evita la recarga de la página al hacer clic en el botón
             document.getElementById("password-container").style.display = "block";
-        }
+        });
 
         function verificarContraseña() {
             var password = document.getElementById("password-input").value;
-            if (password === "tu_contraseña_aqui") {
+            if (password === "vergara") {
                 audio.play();
             } else {
                 alert("Contraseña incorrecta. No puedes pasar.");
