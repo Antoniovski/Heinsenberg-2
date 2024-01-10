@@ -1,49 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
-    <title>Tienes un nuevo mensaje de Heisenberg</title>
+    <title>Mensaje de Heisenberg</title>
     <style>
         body {
             text-align: center;
-            font-family: Arial, sans-serif;
-            background-color: #f1f1f1;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333333;
             padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         h1 {
-            color: #333333;
+            color: #4caf50; /* Verde */
             margin-top: 30px;
         }
 
         img {
-            width: 300px;
+            width: 400px;
             height: auto;
-            margin-bottom: 30px;
+            margin: 20px 0;
+            border: 5px solid #4caf50; /* Verde */
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        #sound-btn {
+        #sound-btn, #password-submit-btn, #elpepe-btn {
             padding: 10px 20px;
-            background-color: #333333;
-            color: #ffffff;
+            background-color: #4caf50; /* Verde */
+            color: #ffffff; /* Blanco */
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            margin-bottom: 20px;
+            margin: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
         }
 
-        #password-form {
+        #sound-btn:hover, #password-submit-btn:hover, #elpepe-btn:hover {
+            background-color: #45a049; /* Verde más oscuro */
+        }
+
+        #password-form, #secret-section {
             display: none;
-            margin-top: 20px;
         }
 
         #password-form label {
             display: block;
-            margin-bottom: 10px;
-            color: #333333;
+            margin: 10px 0;
             font-weight: bold;
         }
 
@@ -51,81 +64,93 @@
             padding: 10px;
             width: 250px;
             border: none;
-            border-bottom: 2px solid #333333;
+            border-bottom: 2px solid #4caf50; /* Verde */
             border-radius: 0;
             font-size: 16px;
             outline: none;
         }
 
-        #password-submit-btn {
-            padding: 10px 20px;
-            background-color: #333333;
-            color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        #secret-section {
-            display: none;
-            margin-top: 30px;
-        }
-
         #secret-section h2 {
-            color: #333333;
-            margin-bottom: 20px;
+            margin: 20px 0;
+            color: #4caf50; /* Verde */
         }
 
-        #elpepe-btn {
-            padding: 10px 20px;
-            background-color: #333333;
-            color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Nuevos estilos para la terminal Fallout */
-        #fallout-terminal {
+        #easter-egg {
+            font-family: monospace;
+            white-space: pre;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 1000;
             display: none;
-            background-color: #000;
-            color: #00ff00;
-            font-family: 'Courier New', Courier, monospace;
-            padding: 20px;
-            box-sizing: border-box;
-            white-space: pre-wrap;
-            overflow: auto;
-            height: 300px;
-            border-radius: 10px;
-            margin-top: 30px;
-            line-height: 1.5;
         }
     </style>
 </head>
 <body>
-    <h1>Yesi, tenemos que cocinar, ¿qué haces con los vagos del "GetaeSanAndreas"?</h1>
+    <h1>¡Yesi, es hora de cocinar! ¿Qué haces con los "GetaeSanAndreas"?</h1>
     <img src="yesi.jpg" alt="Imagen de broma">
     <button id="sound-btn">¡Ya voy, Mr. Blanco!</button>
 
-    <form id="password-form" style="display: none;">
+    <form id="password-form">
         <label for="password-input">Introduce la contraseña:</label>
         <input type="password" id="password-input" placeholder="Contraseña" />
         <button type="submit" id="password-submit-btn">Enviar</button>
     </form>
 
-    <div id="secret-section" style="display: none;">
-        <h2>El Pepe</h2>
+    <div id="secret-section">
+        <h2>¡El Pepe!</h2>
         <button id="elpepe-btn">¡El Pepe!</button>
-        <!-- Agregar la terminal Fallout aquí -->
-        <div id="fallout-terminal"></div>
+    </div>
+
+    <div id="easter-egg">
+        <!-- Arte ASCII simple (un gato paseando) -->
+        <pre>
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⠤⣄⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣀⠴⠚⠉⠁⠀⠀⠀⠀⠀⠈⠉⠳⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣠⠚⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⣆⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢀⡞⡥⠀⠀⠀⠀⣠⠴⢀⣠⠤⢦⡀⠀⠀⠀⠀⠀⠈⣆⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢠⡞⢸⠁⠀⠀⣠⢚⡥⠚⠉⠀⠀⠘⣗⡄⠀⠀⢰⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢾⠇⡎⠀⠀⣰⡳⠋⠀⠀⣠⣤⠶⠢⡿⣸⣆⠀⠈⣧⣄⢸⠁⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⡄⢳⣠⣾⡟⠓⠆⠀⠘⠙⢀⣤⣶⢿⣤⣹⡅⠀⣿⠈⣿⡇⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⡇⠸⡇⣾⡛⣶⡦⠀⠀⠀⠛⢱⢼⣷⠸⠋⢣⠀⡇⣹⠛⡇⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢱⠀⠹⣏⠉⢟⣻⣀⠀⠀⠀⠐⠛⠛⠐⠀⠘⣴⡽⣇⠀⢸⡀⠀⠀⠀⠀⠀
+⠀⠀⠀⠈⢇⠀⠘⡄⠀⠀⢸⡁⠀⠀⠀⠀⠀⠀⠀⠀⣿⢀⢹⡀⠈⣧⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⢦⠀⢻⢦⡀⠈⠰⠶⠒⠂⠀⠀⢀⡤⠀⡇⢘⡆⢇⠀⠸⣷⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠳⡼⡀⣟⡶⢄⡀⠀⢀⡠⠖⠁⠀⢀⡇⢸⢻⠸⡀⠀⣿⢇⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢠⠏⢳⠟⢀⠷⠈⣹⡇⠀⠀⠀⠀⣼⢣⡞⢸⠀⡇⢰⣼⢸⠀⠀⠀
+⠀⠀⠀⠀⠀⢀⠎⣠⠋⢀⡼⠟⠊⠟⠀⠀⠀⠀⠀⣿⠀⠑⢯⣀⣇⣎⢏⡞⠀⠀⠀
+⠀⠀⠀⢀⡠⠾⠔⠓⢞⣁⣀⣀⠀⠀⠀⠀⠀⠀⠀⢻⣀⣀⣀⡈⠛⠿⠯⣀⠀⠀⠀
+⠀⠀⢠⠋⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠐⠉⠉⠉⠉⠉⣧⡀⠀⠀⠀⠀⠀⠀⠑⡄⠀
+⠀⠀⢻⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠧⠀⠀⠀⠀⠀⠀⠀⢹⡆
+⠀⠀⢸⠀⠀⡼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⠀⠀⠀⠀⠀⠀⡼⠃
+⠀⠀⠘⡤⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⡀⠀⠀⠀⠀⢠⠇⠀
+⠀⣠⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢣⠀⠀⠀⠀⡎⠀⠀
+⢠⠇⣠⡂⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠘⡄⠀⠀⡸⠀⠀⠀
+⢸⡀⠛⠄⢀⠀⠀⠀⠀⠀⠀⠀⣸⠀⠀⠀⠀⠀⠀⠀⢀⠵⠀⠀⡇⠀⢀⠇⠀⠀⠀
+⠀⢷⡀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠸⡀⠀⠀⠀⠀⠀⠂⠀⠀⠀⣰⠁⠀⣾⠀⠀⠀⠀
+⠀⠀⠑⢤⣀⠀⠀⢀⣠⠴⠋⠀⠀⠙⢦⡀⠀⠀⠀⠀⠀⣀⡴⠁⠀⢠⠃⠀⠀⠀⠀
+⠀⠀⠀⠀⢠⢻⠉⠁⠀⠀⠀⠀⠀⠀⠀⠈⠉⠒⠒⠒⠉⡽⠀⠀⠀⡼⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠸⣾⠀⠐⠀⠀⠀⠀⠀⠑⢤⡀⠀⠀⠀⠀⠀⡇⠀⠀⢠⠇⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣿⡄⠀⠀⢠⡀⠀⠀⠀⠀⠙⣄⠀⠀⠀⢰⠁⠀⠀⣼⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢿⣇⠀⠀⢸⠀⠀⠀⠀⠀⠀⠈⠁⠀⢀⡜⠀⠀⠀⡗⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢸⢸⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⢠⡇⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠸⣿⡆⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠐⡇⠀⠀⢰⠃⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣻⠁⠀⠸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⢣⠀⠀⡞⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢠⠃⠀⠀⠸⢳⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠳⡼⠁⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢠⠏⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠢⡀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢀⡎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢦⡀⠀⠀⠀⠀
+        </pre>
     </div>
 
     <script>
         var audio = new Audio("rompiendomalo.mp3");
         var soundButton = document.getElementById("sound-btn");
+        var easterEggDiv = document.getElementById("easter-egg");
+        var reloadCount = localStorage.getItem('reloadCount') || 0;
+
         soundButton.addEventListener("click", function() {
             audio.play();
             showPasswordForm();
@@ -156,14 +181,27 @@
         function showSecretSection() {
             passwordForm.style.display = "none";
             document.getElementById("secret-section").style.display = "block";
-            showFalloutTerminal();
         }
 
-        // Nueva función para mostrar la terminal Fallout
-        function showFalloutTerminal() {
-            var falloutTerminal = document.getElementById("fallout-terminal");
-            falloutTerminal.style.display = "block";
-            falloutTerminal.innerHTML = "Bienvenido a la Terminal Fallout\n>";
+        // Detener la música al recargar la página
+        window.addEventListener('beforeunload', function() {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+
+        // Easter egg al recargar la página 5 veces
+        if (reloadCount >= 4) {
+            localStorage.removeItem('reloadCount');
+            showEasterEgg();
+        } else {
+            localStorage.setItem('reloadCount', ++reloadCount);
+        }
+
+        function showEasterEgg() {
+            easterEggDiv.style.display = "block";
+            setTimeout(function() {
+                easterEggDiv.style.display = "none";
+            }, 5000); // Desaparecer después de 5 segundos
         }
     </script>
 </body>
